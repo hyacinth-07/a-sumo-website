@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:alpine
 
 # ensure environmental variables are available
 ARG PORT
