@@ -7,8 +7,8 @@ app.use(express.json());
 
 // INIT DOTENV
 import dotenv from 'dotenv';
-//const port = process.env.PORT;
-const port = 5000;
+require('dotenv').config()
+const port = process.env.PORT || 5000;
 
 
 
