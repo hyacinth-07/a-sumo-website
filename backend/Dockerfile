@@ -23,7 +23,7 @@ EXPOSE $PORT
 
 # Build the typescript code
 # this soulw be unnecessary in production
-RUN npm run build
+# RUN npm run build
 
 # if building the whole folder
 # CMD [ "npm", "run", "dev" ]
