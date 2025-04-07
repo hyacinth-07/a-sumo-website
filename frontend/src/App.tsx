@@ -1,22 +1,29 @@
 import { fetchHelloWorld } from "./fetch/fetch-hello-world"
+import { useState, useEffect } from "react";
 
 function App() {
 
-  const fetchData = async () => {
-    try {
-      const data = await fetchHelloWorld();
-      console.log(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  const [text, setText] = useState<string | null>(null);
 
-  fetchData()
+
+  useEffect(() => {
+
+    try {
+      fetchHelloWorld().then((data) => {
+        setText(data);
+      })
+    } catch (error) {
+      throw new Error(`${error}`)
+    }
+
+  }, []);
+
+  
 
   return (
     <>
       <div>
-        <p>Some text</p>
+        <p>{text}</p>
       </div>
         
     </>

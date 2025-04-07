@@ -6,10 +6,10 @@ export const fetchHelloWorld = async (): Promise<string> => {
         throw new Error(`Error fetching data: ${response.statusText} | ${response.status}`);
     }
 
-
+    
     const data = await response.json();
 
-    return data
+    return data.message
 }
 
 
