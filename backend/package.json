@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp -r src/generated/prisma dist/generated/prisma",
     "dev": "tsx --watch src/server.ts"
   },
   "dependencies": {
@@ -12,6 +12,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^22.14.0",
+    "prisma": "^6.6.0",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2"
   }
