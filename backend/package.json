@@ -1,7 +1,8 @@
 {
   "scripts": {
     "build": "tsc && cp -r src/generated/prisma dist/generated/prisma",
-    "dev": "tsx --watch src/server.ts"
+    "dev": "tsx --watch src/server.ts",
+    "poptest": "tsx src/prisma/dbPopulate.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",
