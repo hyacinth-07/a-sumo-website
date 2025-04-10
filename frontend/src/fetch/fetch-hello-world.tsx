@@ -1,3 +1,5 @@
+// fix this so it returns an array
+
 export const fetchHelloWorld = async (): Promise<string> => {
 
     const response = await fetch('http://localhost:3000/', {credentials: 'include'});
@@ -8,8 +10,9 @@ export const fetchHelloWorld = async (): Promise<string> => {
 
     
     const data = await response.json();
+    console.log(data)
 
-    return data.message
+    return data
 }
 
 

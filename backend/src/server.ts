@@ -33,8 +33,8 @@ main()
 
 // BASIC ROUTES    
 app.get("/", (req: Request, res: Response) => {
-    res.json({
-        message: "Hello World, and other stories"});
+    const allRikishi = prisma.rikishi.findMany();
+    res.json(allRikishi);
 });
 
 app.listen(port, () => {

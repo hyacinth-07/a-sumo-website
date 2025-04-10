@@ -21,9 +21,10 @@ function App() {
   
 
   return (
+
     <>
       <div>
-        <p>{text}</p>
+        <p>Nothing</p>
       </div>
         
     </>
