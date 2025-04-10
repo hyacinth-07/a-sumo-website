@@ -15,7 +15,7 @@ datasource db {
 }
 
 model Rikishi {
-  id String @id @unique @default(uuid())
+  id   String @id @unique @default(uuid())
   name String @unique
-  age Int
+  age  Int
 }
