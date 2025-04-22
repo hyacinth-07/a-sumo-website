@@ -32,8 +32,8 @@ main()
 	});
 
 // BASIC ROUTES    
-app.get("/", (req: Request, res: Response) => {
-    const allRikishi = prisma.rikishi.findMany();
+app.get("/", async (req: Request, res: Response) => {
+    const allRikishi = await prisma.rikishi.findMany();
     res.json(allRikishi);
 });
 

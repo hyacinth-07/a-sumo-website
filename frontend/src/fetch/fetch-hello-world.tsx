@@ -10,7 +10,6 @@ export const fetchHelloWorld = async (): Promise<string> => {
 
     
     const data = await response.json();
-    console.log(data)
 
     return data
 }
