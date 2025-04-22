@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 
 function App() {
 
-  const [text, setText] = useState<string | null>(null);
+  // this should really be the proper type
+  const [text, setText] = useState<any | null>(null); 
 
 
   useEffect(() => {
@@ -18,13 +19,12 @@ function App() {
 
   }, []);
 
-  
 
   return (
 
     <>
       <div>
-        <p>Nothing</p>
+        {text}
       </div>
         
     </>
