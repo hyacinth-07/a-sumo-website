@@ -1,6 +1,7 @@
 // fix this so it returns an array
+import { Rikishi } from "../types/Rikishi";
 
-export const fetchHelloWorld = async (): Promise<string> => {
+export const fetchHelloWorld = async (): Promise< Rikishi[] > => {
 
     const response = await fetch('http://localhost:3000/', {credentials: 'include'});
 
@@ -9,7 +10,7 @@ export const fetchHelloWorld = async (): Promise<string> => {
     }
 
     
-    const data = await response.json();
+    const data : Rikishi[] = await response.json();
 
     return data
 }

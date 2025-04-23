@@ -1,11 +1,11 @@
 import { fetchHelloWorld } from "./fetch/fetch-hello-world"
 import { useState, useEffect } from "react";
+import { Rikishi } from "./types/Rikishi";
 
 function App() {
 
   // this should really be the proper type
-  const [text, setText] = useState<any | null>(null); 
-
+  const [text, setText] = useState<Rikishi[] | null>(null); 
 
   useEffect(() => {
 
@@ -20,11 +20,16 @@ function App() {
   }, []);
 
 
+  // const list = text.map((item: any) =>  <li>{item.name}</li> )
+  
   return (
+    
 
     <>
       <div>
-        {text}
+        <ul>
+        {/* {text.map((item: any) => <li key={item.id}>{item.name}</li>)}    */}
+        </ul>
       </div>
         
     </>
