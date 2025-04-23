@@ -4,7 +4,6 @@ import { Rikishi } from "./types/Rikishi";
 
 function App() {
 
-  // this should really be the proper type
   const [text, setText] = useState<Rikishi[] | null>(null); 
 
   useEffect(() => {
