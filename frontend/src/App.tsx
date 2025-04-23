@@ -19,21 +19,18 @@ function App() {
 
   }, []);
 
+const list = text?.map((elem: Rikishi)=> <li key={elem.id}>{elem.name}, {elem.age}</li>)
 
-  // const list = text.map((item: any) =>  <li>{item.name}</li> )
-  
   return (
-    
-
-    <>
-      <div>
-        <ul>
-        {/* {text.map((item: any) => <li key={item.id}>{item.name}</li>)}    */}
-        </ul>
-      </div>
-        
-    </>
-  )
+  <>
+  <div>
+    <h1>A list of strong men</h1>
+    <ul>
+      {list}
+    </ul>
+  </div>
+  </>
+  );
 }
 
 export default App
