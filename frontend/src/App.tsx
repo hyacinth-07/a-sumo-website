@@ -1,6 +1,7 @@
 import { fetchHelloWorld } from "./fetch/fetch-hello-world"
 import { useState, useEffect } from "react";
 import { Rikishi } from "./types/Rikishi";
+import FetchRikishi from "./components/FetchRikishi";
 
 function App() {
 
@@ -28,6 +29,7 @@ const list = text?.map((elem: Rikishi)=> <li key={elem.id}>{elem.name}, {elem.ag
       {list}
     </ul>
   </div>
+  <FetchRikishi />
   </>
   );
 }
