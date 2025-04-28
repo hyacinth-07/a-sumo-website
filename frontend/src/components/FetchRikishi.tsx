@@ -4,6 +4,11 @@ import { fetchRikishi } from "../fetch/fetch-rikishi";
 export default function FetchRikishi() {
 
     const [text, setText] = useState("");
+    const [searchedName, setSearchedName] = useState("")
+
+
+    
+
     
     const handleClick = async () => {
 
@@ -18,6 +23,9 @@ export default function FetchRikishi() {
 
     return (
     <div>
+        <label>Search by Name:
+            <input type="text" name="rikishiName" id="rikishiName" value={searchedName} onChange={e => setSearchedName(e.target.value)}/>
+        </label>
         <button onClick={handleClick}>Find one!</button>
         {text && (
             <pre> 
