@@ -1,3 +1,5 @@
+// need to write the proper type for the rikishi
+
 export const fetchAllRikishi = async (intai: boolean) => {
     
     if (intai === true) {

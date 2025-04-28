@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fetchRikishi } from "../fetch/fetch-rikishi";
+import { fetchAllRikishi } from "../fetch/fetch-all-rikishi";
 
 export default function FetchRikishi() {
 
@@ -7,8 +8,14 @@ export default function FetchRikishi() {
     const [searchedName, setSearchedName] = useState("")
 
 
-    
 
+    useEffect(() => {
+        try {
+            fetchAllRikishi(false).then((data) => console.log(data))
+        } catch (error) {
+            throw new Error(`${error}`)
+        }
+    })
     
     const handleClick = async () => {
 
