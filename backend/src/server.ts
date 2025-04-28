@@ -33,8 +33,12 @@ main()
 
 // BASIC ROUTES    
 app.get("/", async (req: Request, res: Response) => {
-    const allRikishi = await prisma.rikishi.findMany();
-    res.json(allRikishi);
+
+	// commented out because for now we don't need to access the volume
+	// in the future it should be properly implemented
+	
+    // const allRikishi = await prisma.rikishi.findMany();
+    // res.json(allRikishi);
 });
 
 app.listen(port, () => {
