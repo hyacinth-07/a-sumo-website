@@ -11,11 +11,18 @@ export default function FetchRikishi() {
 
     useEffect(() => {
         try {
-            fetchAllRikishi(false).then((data) => console.log(data))
+            fetchAllRikishi().then((data) => console.log(data))
         } catch (error) {
             throw new Error(`${error}`)
         }
-    })
+    }, [])
+
+    const searchOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        if (typeof value === "string" || value === "") {
+            setSearchedName(value);
+        } 
+    };
     
     const handleClick = async () => {
 
@@ -31,7 +38,7 @@ export default function FetchRikishi() {
     return (
     <div>
         <label>Search by Name:
-            <input type="text" name="rikishiName" id="rikishiName" value={searchedName} onChange={e => setSearchedName(e.target.value)}/>
+            <input type="text" name="rikishiName" id="rikishiName" value={searchedName} onChange={searchOnChange}/>
         </label>
         <button onClick={handleClick}>Find one!</button>
         {text && (
