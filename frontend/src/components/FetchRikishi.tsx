@@ -6,31 +6,41 @@ export default function FetchRikishi() {
 
     const [result, setResult] = useState("");
     const [searchedName, setSearchedName] = useState("")
-    const [suggestions, setSuggestions] = useState(Array)
-    const [autocomplete, setAutocomplete] = useState<React.ReactNode[]>([])
+    // const [suggestions, setSuggestions] = useState(Array)
+    const [autocomplete, setAutocomplete] = useState(Array)
 
     const searchOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-
-        try {
-            fetchAllRikishi().then((data) => setSuggestions(data.records))
-        } catch (error) {
-            throw new Error(`${error}`)
-        }
-
         const value = event.target.value;
-        if (typeof value === "string" || value === "") {
-            setSearchedName(value);
-        } 
 
+        // Update the searchedName state
+        setSearchedName(value);
 
-        setAutocomplete(suggestions.filter((item) => item.shikonaEn?.toLowerCase().includes(searchedName.toLowerCase())).map(item => <p key={item.id}>{item.shikonaEn}, {item.currentRank}</p>))
+        // Only filter suggestions if the input length is greater than 2
+        if (value.length >= 2) {
+            try {
+                fetchAllRikishi().then((data) => {
+                    // setSuggestions(data.records);
 
+                    // Filter suggestions based on the current input value
+                    setAutocomplete(
+                        data.records.filter((item) =>
+                            item.shikonaEn?.toLowerCase().includes(value.toLowerCase())
+                        )
+                    );
+                });
+            } catch (error) {
+                console.error("Error fetching rikishi:", error);
+            }
+        } else {
+            // Clear autocomplete if input length is 2 or less
+            setAutocomplete([]);
+        }
     };
     
     const handleClick = async (name: string) => {
 
         try {
-            fetchRikishi().then((data) => setResult(data))
+            fetchRikishi(name).then((data) => setResult(data))
         } catch (error) {
             throw new Error(`${error}`)
         }
@@ -43,12 +53,9 @@ export default function FetchRikishi() {
             <input type="text" name="rikishiName" id="rikishiName" value={searchedName} onChange={searchOnChange}/>
         </label>
         <button onClick={() => handleClick(searchedName)}>Find one!</button>
-        {autocomplete.length > 0 && (
-            <div>
-                <h3>Suggestions:</h3>
-                {autocomplete}
-            </div>
-        )}
+        
+        {autocomplete.length > 0 && (autocomplete.map(item => <p key={item.id}>{item.shikonaEn}, {item.currentRank}</p>)).slice(0, 10)}
+
         {result && (
             <pre> 
                 {JSON.stringify(result, null, 2)}
