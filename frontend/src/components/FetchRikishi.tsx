@@ -6,7 +6,6 @@ export default function FetchRikishi() {
 
     const [result, setResult] = useState("");
     const [searchedName, setSearchedName] = useState("")
-    // const [suggestions, setSuggestions] = useState(Array)
     const [autocomplete, setAutocomplete] = useState(Array)
 
     const searchOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,8 +18,6 @@ export default function FetchRikishi() {
         if (value.length >= 2) {
             try {
                 fetchAllRikishi().then((data) => {
-                    // setSuggestions(data.records);
-
                     // Filter suggestions based on the current input value
                     setAutocomplete(
                         data.records.filter((item) =>
